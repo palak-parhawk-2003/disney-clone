@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "../firebase";
 import React from "react";
 
@@ -13,7 +13,6 @@ const Header = (props) => {
   const handleAuth = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        
         setUser({
           isSignedIn: true,
           name: result.user.displayName,
@@ -33,6 +32,9 @@ const Header = (props) => {
           name: "",
           photo: "",
           email: "",
+        });
+        provider.setCustomParameters({
+          prompt: "select_account",
         });
         console.log("signed out");
         console.log(user);
