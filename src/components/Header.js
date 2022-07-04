@@ -75,8 +75,11 @@ const Header = (props) => {
           <span>SERIES</span>
         </a>
       </NavMenu>
-      <Login onClick={signout}>Signout</Login>
-      <Login onClick={handleAuth}>Login</Login>
+      {user.isSignedIn ? (
+        <Login onClick={signout}>Signout</Login>
+      ) : (
+        <Login onClick={handleAuth}>Login</Login>
+      )}
     </Nav>
   );
 };
