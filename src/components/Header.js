@@ -1,15 +1,44 @@
 import styled from "styled-components";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "../firebase";
+import React from "react";
 
 const Header = (props) => {
+  const [user, setUser] = React.useState({
+    isSignedIn: false,
+    name: "",
+    photo: "",
+    email: "",
+  });
   const handleAuth = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        
+        setUser({
+          isSignedIn: true,
+          name: result.user.displayName,
+          photo: result.user.photoURL,
+        });
+        alert("Welcome " + result.user.displayName);
       })
       .catch((error) => {
         alert(error.message);
+      });
+  };
+  const signout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser({
+          isSignedIn: false,
+          name: "",
+          photo: "",
+          email: "",
+        });
+        console.log("signed out");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -44,6 +73,7 @@ const Header = (props) => {
           <span>SERIES</span>
         </a>
       </NavMenu>
+      <Login onClick={signout}>Signout</Login>
       <Login onClick={handleAuth}>Login</Login>
     </Nav>
   );
