@@ -1,28 +1,44 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectRecommend } from "../features/movie/movieSlice";
 
 const Recommends = (props) => {
-//   const movies = useSelector(selectRecommend);
 //   console.log(movies, ":🛢️");
     return (
         <Container>
             <h4>Recommended For You</h4>
             <Content>
-            {/* {movies &&
-                    movies.map((movie, key) => (
-                        <Wrap key={key}>
-                            {movie.id}
-                            <Link to={`/detail/` + movie.id}>
-                                <img src={movie.cardImg} alt={movie.title} />
-                            </Link>
-                        </Wrap>
-                    ))}; */}
-                <h1>1</h1>
-                <h1>1</h1>
-                <h1>1</h1>
-                <h1>1</h1>
+              <Wrap>
+                <Link to ="/">
+                  <img 
+                    src="https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_FMjpg_UX1000_.jpg"
+                    alt=""
+                  />
+                </Link>
+              </Wrap>
+              <Wrap>
+                <Link to ="/">
+                  <img 
+                    src="https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_FMjpg_UX1000_.jpg"
+                    alt=""
+                  />
+                </Link>
+              </Wrap>
+              <Wrap>
+                <Link to ="/">
+                  <img 
+                    src="https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_FMjpg_UX1000_.jpg"
+                    alt=""
+                  />
+                </Link>
+              </Wrap>
+              <Wrap>
+                <Link to ="/">
+                  <img 
+                    src="https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_FMjpg_UX1000_.jpg"
+                    alt=""
+                  />
+                </Link>
+              </Wrap>
             </Content>
         </Container>
     );
